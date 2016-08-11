@@ -8,5 +8,5 @@ install:
   - composer require --dev phpunit/phpunit
 
 script:
-  - phpunit tests/ExampleTest.php
+  - phpunit tests/URLDeconstructorTest.php
   - phpunit tests/WorkshopTest.php
