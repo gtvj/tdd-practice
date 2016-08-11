@@ -33,6 +33,10 @@ class SubmissionTesterTest extends PHPUnit_Framework_TestCase
     public function testTestSubmission()
     {
         $this->assertEquals($this->submission->getBadWordsFoundInSubmission(), array('onions', 'pepperoni'));
-        
+    }
+
+    public function testResponse()
+    {
+        $this->assertEquals($this->submission->respond(), 'Sorry, Gwyn, your submission was not allowed because it contained onions and pepperoni');
     }
 }

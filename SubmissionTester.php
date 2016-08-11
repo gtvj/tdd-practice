@@ -5,7 +5,7 @@ class SubmissionTester
     private $name;
     private $submittedContent;
     private $badWords;
-    private $acceptedSubmission;
+    private $acceptedSubmission = true;
     private $badWordsFoundInSubmission = array();
 
     public function getBadWordsFoundInSubmission()
@@ -45,12 +45,22 @@ class SubmissionTester
 
     public function testSubmission()
     {
-        foreach($this->badWords as $badWord) {
-            if(strpos($this->submittedContent, $badWord)) {
+        foreach ($this->badWords as $badWord) {
+            if (strpos($this->submittedContent, $badWord)) {
                 $this->acceptedSubmission = false;
                 array_push($this->badWordsFoundInSubmission, $badWord);
             }
         }
+    }
+
+    public function respond()
+    {
+        if ($this->acceptedSubmission == true) {
+            return sprintf('Thanks, %s, your submission was successful');
+        }
+
+        return sprintf('Sorry, %s, your submission was not allowed because it contained %s', $this->getName(), implode(' and ', $this->badWordsFoundInSubmission));
+
     }
 
     public function __construct($name, $submittedContent, $badWords)
