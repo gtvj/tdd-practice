@@ -1,4 +1,4 @@
-# Test Driven Development (TDD)workshop
+# Test Driven Development (TDD) workshop
 
 ## Purpose 
 
