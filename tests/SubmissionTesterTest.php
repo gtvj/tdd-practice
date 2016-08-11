@@ -20,4 +20,11 @@ class SubmissionTesterTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals($this->submission->getName(), 'Gwyn');
     }
+
+    public function testSubmittedContentAttribute()
+    {
+        $this->assertEquals($this->submission->getSubmittedContent(), 'More onions, pepperoni, cheese and mushrooms for me please');
+    }
+
+
 }

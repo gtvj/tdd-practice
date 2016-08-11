@@ -3,6 +3,17 @@
 class SubmissionTester
 {
     private $name;
+    private $submittedContent;
+
+    public function getSubmittedContent()
+    {
+        return $this->submittedContent;
+    }
+
+    public function setSubmittedContent($submittedContent)
+    {
+        $this->submittedContent = $submittedContent;
+    }
 
     public function getName()
     {
@@ -14,9 +25,10 @@ class SubmissionTester
         $this->name = $name;
     }
 
-    public function __construct($name)
+    public function __construct($name, $submittedContent)
     {
         $this->setName($name);
+        $this->setSubmittedContent($submittedContent);
     }
 
 }
