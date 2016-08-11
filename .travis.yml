@@ -10,3 +10,4 @@ install:
 script:
   - phpunit tests/ExampleTest.php
   - phpunit tests/WorkshopTest.php
+  - phpunit tests/SubmissionTesterTest.php
