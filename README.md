@@ -29,3 +29,36 @@ The steps to get set up are:
 * `WorkshopTest.php` is where we will write our tests
 * `composer.json` lists our Composer dependencies (this is where Composer looks when you type `composer install`)
 * `.travis.yml` is used by Travis Continuous Integration (CI) to describe what it needs to do in order to run our tests
+
+### The tasks 
+
+The following tasks have been 
+
+# URL splitting
+
+Develop a class, function or set of functions which decompose a given URL into its constituents. For example, given the URL `http://www.nationalarchives.gov.uk/news`, it should return: 
+
+* The protocol: 'http'
+* The domain: 'www.nationalarchives.gov.uk'
+* The path: '/news'
+
+If the argument passed to the URL is not properly formatted the function should fail gracefully (in some way). 
+
+For example: 
+
+```php
+\\ If you were to opt for individual functions, a get_path() function might look like this
+$path = get_path('http://www.nationalarchives.gov.uk/news') \\ $path should be '\news'
+```
+
+```php
+\\ While another version might return an array representing the parts
+$url = deconstruct('http://www.nationalarchives.gov.uk/news') \\ $url["path"] would be '\news'
+
+```
+
+```php
+\\ An object oriented approach might be 
+$url = new Deconstructor('http://www.nationalarchives.gov.uk/news') \\ $url->path would be '\news'
+
+```
