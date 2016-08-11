@@ -5,10 +5,9 @@ require dirname(__DIR__) . '/SubmissionTester.php';
 class SubmissionTesterTest extends PHPUnit_Framework_TestCase
 {
     protected function setUp() {
-
-        $bad_words = array('onions', 'pepperoni');
+        $this->bad_words = array('onions', 'pepperoni');
         $this->submission = new SubmissionTester('Gwyn', 'More onions, pepperoni, cheese and mushrooms for me please',
-            $bad_words);
+            $this->bad_words);
     }
 
     public function testInstanceOf()
@@ -24,6 +23,11 @@ class SubmissionTesterTest extends PHPUnit_Framework_TestCase
     public function testSubmittedContentAttribute()
     {
         $this->assertEquals($this->submission->getSubmittedContent(), 'More onions, pepperoni, cheese and mushrooms for me please');
+    }
+
+    public function testBadWordsAttribute()
+    {
+        $this->assertEquals($this->submission->getBadWords(), $this->bad_words);
     }
 
 
