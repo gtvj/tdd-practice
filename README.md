@@ -62,3 +62,31 @@ $url = deconstruct('http://www.nationalarchives.gov.uk/news') \\ $url["path"] wo
 $url = new Deconstructor('http://www.nationalarchives.gov.uk/news') \\ $url->path would be '\news'
 
 ```
+
+# Stop words
+
+Develop a class, function or set of functions which, given: 
+
+* a user name
+* Paragraph(s)
+* an array of words
+
+returns a string informing that either:
+ * that their submission has been successful
+ * that their submission was rejected because it included unacceptable words (and lists the words that caused the rejection)
+ 
+```php 
+\\ If you were to opt for individual functions
+$message = check_submission('Gwyn', 'Extra onions, mushrooms, ham and cheese for me please', array('onions', 'ham'))
+
+\\ $message would be 'Sorry, your submision was not successful because "onions" and "ham" are not allowed')
+
+```
+
+```php
+\\ An object oriented approach might be
+$submission = new Submission('Gwyn', 'Extra onions, mushrooms, ham and cheese for me please', array('onions', 'ham'))
+
+\\ $submission->success would be 'false'
+\\ $submission->message would be the same as $message from the example above
+```
