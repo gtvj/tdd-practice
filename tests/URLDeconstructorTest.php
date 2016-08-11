@@ -33,5 +33,18 @@ class URLDeconstructorTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($url->getProtocol(), 'https://', "The protocol attribute was set successfully");
     }
 
+    public function testDomain()
+    {
+        $url = new URLDeconstructor('http://www.nationalarchives.gov.uk/news');
+        $this->assertEquals($url->getDomain(), 'www.nationalarchives.gov.uk', "The domain attribute was set successfully");
+
+        $url = new URLDeconstructor('http://www.parliament.gov.uk/news');
+        $this->assertEquals($url->getDomain(), 'www.parliament.gov.uk', "The domain attribute was set successfully");
+
+        $url = new URLDeconstructor('http://www.homeoffice.gov.uk/news');
+        $this->assertEquals($url->getDomain(), 'www.homeoffice.gov.uk', "The domain attribute was set successfully");
+
+    }
+
 
 }

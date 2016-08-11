@@ -6,7 +6,8 @@ class URLDeconstructor
     private $url;
     private $path;
     private $protocol;
-    private $pattern = '/(https?:\/\/)?(www.)?[^\.]*.(gov.uk|com|co.uk)(\/.*)/';
+    private $domain;
+    private $pattern = '/(https?:\/\/)?((www.)?[^\.]*.(gov.uk|com|co.uk))(\/.*)/';
 
     public function getPath()
     {
@@ -15,7 +16,7 @@ class URLDeconstructor
 
     public function setPath($url)
     {
-        $this->path = preg_filter($this->pattern, '$4', $url);
+        $this->path = preg_filter($this->pattern, '$5', $url);
     }
 
     public function getProtocol()
@@ -28,11 +29,22 @@ class URLDeconstructor
         $this->protocol = preg_filter($this->pattern, '$1', $url);
     }
 
+    public function getDomain()
+    {
+        return $this->domain;
+    }
+
+    public function setDomain($url)
+    {
+        $this->domain = preg_filter($this->pattern, '$2', $url);
+    }
+
     public function __construct($url)
     {
         $this->url = $url;
         $this->setPath($this->url);
         $this->setProtocol($this->url);
+        $this->setDomain($this->url);
     }
 
 
