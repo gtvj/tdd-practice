@@ -20,7 +20,11 @@ class SubmissionTester
 
     public function setBadWords($badWords)
     {
-        $this->badWords = $badWords;
+        if ($badWords !== false && is_array($badWords) && count($badWords) > 0) {
+            $this->badWords = $badWords;
+        } else {
+            $this->badWords = array();
+        }
     }
 
     public function getSubmittedContent()
@@ -59,11 +63,12 @@ class SubmissionTester
             return sprintf('Thanks, %s, your submission was successful');
         }
 
-        return sprintf('Sorry, %s, your submission was not allowed because it contained %s', $this->getName(), implode(' and ', $this->badWordsFoundInSubmission));
+        return sprintf('Sorry, %s, your submission was not allowed because it contained %s', $this->getName(),
+            implode(' and ', $this->badWordsFoundInSubmission));
 
     }
 
-    public function __construct($name, $submittedContent, $badWords)
+    public function __construct($name, $submittedContent, $badWords = false)
     {
         $this->setName($name);
         $this->setSubmittedContent($submittedContent);
